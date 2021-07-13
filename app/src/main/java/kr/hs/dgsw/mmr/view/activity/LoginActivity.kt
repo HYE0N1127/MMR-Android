@@ -27,6 +27,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
                 val preferencesEditor: SharedPreferences.Editor = mPreferences.edit()
                 preferencesEditor.putString("name", it)
+                preferencesEditor.putString("id", id.value)
                 preferencesEditor.apply()
 
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)

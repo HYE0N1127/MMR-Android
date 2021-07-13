@@ -29,7 +29,6 @@ class PostDetailActivity : BaseActivity<ActivityPostDetailBinding, PostDetailVie
                 mBinding.detailRecipe.text = it.content
                 mBinding.detailMeterial.text = it.materials.toString()
                 mBinding.detailUser.text = it.userName
-                Log.e("123", it.imgUrl)
                 //재료 처리
                 //버튼 클릭 처리
             })
