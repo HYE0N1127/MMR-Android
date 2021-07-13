@@ -12,6 +12,7 @@ import kr.hs.dgsw.mmr.R
 import kr.hs.dgsw.mmr.databinding.FragmentHomeBinding
 import kr.hs.dgsw.mmr.databinding.ItemPostBinding
 import kr.hs.dgsw.mmr.network.model.response.PostResponse
+import kr.hs.dgsw.mmr.view.activity.PostDetailActivity
 import kr.hs.dgsw.mmr.view.fragment.ProfileFragment
 
 class HomePostListAdapter() : RecyclerView.Adapter<HomePostListAdapter.HomePostViewHolder>() {
@@ -40,9 +41,9 @@ class HomePostListAdapter() : RecyclerView.Adapter<HomePostListAdapter.HomePostV
             binding.tvPostSubTitle.text = postResponse.summary
             binding.tvUserName.text = postResponse.userName
             itemView.setOnClickListener {
-//                val intent = Intent(context, ProfileFragment::class.java)
-//                intent.putExtra("postId", postResponse.id)
-//                context.startActivity(intent)
+                val intent = Intent(context, PostDetailActivity::class.java)
+                intent.putExtra("postId", postResponse.id)
+                context.startActivity(intent)
             }
         }
 
