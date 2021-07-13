@@ -49,6 +49,7 @@ class PostDetailViewModel : BaseViewModel() {
                 override fun onSuccess(t: Boolean) {
                     like.value = t
                     checkLikePost(postId, userId)
+                    detailPostGetData(postId)
                 }
 
                 override fun onError(e: Throwable) {

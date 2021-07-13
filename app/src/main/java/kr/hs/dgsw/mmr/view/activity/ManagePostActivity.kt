@@ -18,9 +18,14 @@ class ManagePostActivity : BaseActivity<ActivityManagePostBinding, ManagePostVie
         val userId = intent.getStringExtra("userId")
         Log.e("!", userId.toString())
         viewModel.getMyPost(userId.toString())
+        mBinding.manageRefresh.setOnRefreshListener {
+            mBinding.manageRefresh.isRefreshing = false
+            viewModel.getMyPost(userId.toString())
+        }
     }
 
     override fun observerViewModel() {
+
         with(mViewModel) {
             mBinding.rvManageList.adapter = adapter
             adapter.context = this@ManagePostActivity

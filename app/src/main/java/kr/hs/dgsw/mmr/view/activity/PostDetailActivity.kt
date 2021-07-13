@@ -15,9 +15,18 @@ class PostDetailActivity : BaseActivity<ActivityPostDetailBinding, PostDetailVie
     var userId = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(this).get(PostDetailViewModel::class.java)
+        postId = intent.getIntExtra("postId", 0)
+        userId = getSharedPreferences("LoginActivity", MODE_PRIVATE).getString("id", "")?:""
         super.onCreate(savedInstanceState)
         mViewModel.detailPostGetData(postId)
         mViewModel.checkLikePost(postId, userId ?: "")
+<<<<<<< feat/modify_name
+=======
+        mBinding.detailRefresh.setOnRefreshListener {
+            mBinding.detailRefresh.isRefreshing = false
+            mViewModel.detailPostGetData(postId)
+        }
+>>>>>>> Develope
     }
 
     override fun observerViewModel() {
