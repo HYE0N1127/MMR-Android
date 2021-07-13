@@ -1,5 +1,6 @@
 package kr.hs.dgsw.mmr.viewmodel.activity
 
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.observers.DisposableSingleObserver
 import kr.hs.dgsw.mmr.base.BaseViewModel
@@ -31,8 +32,8 @@ class SignUpViewModel : BaseViewModel() {
             })
     }
 
-    fun onClickRegister(){
-        if(check_pw.equals(pw)){
+    fun onClickRegister(view: View) {
+        if (check_pw.equals(pw)) {
             register(id.value.toString(), pw.value.toString(), name.value.toString())
         } else {
             error.value = Throwable("비밀번호가 맞지 않습니다.")

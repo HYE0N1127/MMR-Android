@@ -25,6 +25,7 @@
                 android:src="@drawable/ic_profile" />
 
             <TextView
+                android:id="@+id/tv_userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -74,6 +75,7 @@
             android:layout_marginTop="5dp" />
 
         <TextView
+            android:id="@+id/tv_post_subTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="구수한 냄새가 일품입니당."
