@@ -19,8 +19,6 @@ enum class FragmentEnum {
 
 class MainActivity() : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
-    override val viewModel =
-        ViewModelProvider(this, MainViewModelFactory()).get(MainViewModel::class.java)
 
     lateinit var viewModelFactory: MainViewModelFactory
     lateinit var binding: ActivityMainBinding
@@ -35,11 +33,12 @@ class MainActivity() : BaseActivity<ActivityMainBinding, MainViewModel>() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        viewModel =
+            ViewModelProvider(this, MainViewModelFactory()).get(MainViewModel::class.java)
+
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(
-            this,
-            R.layout.activity_main
-        )
+
     }
 
     override fun observerViewModel() {
