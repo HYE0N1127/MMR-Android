@@ -38,4 +38,14 @@ class PostRepository {
             it.body()!!.data
         }
     }
+
+    fun getPostByUserId(postId : Int): Single<PostResponse> {
+        return Server.retrofit.getPostById(postId).map{
+            if(!it.isSuccessful){
+                val errorBody = JSONObject(it.errorBody().toString())
+                throw Throwable(errorBody.getString("message"))
+            }
+            it.body()!!.data
+        }
+    }
 }

@@ -14,7 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 import kr.hs.dgsw.mmr.R
 import kr.hs.dgsw.mmr.base.BaseActivity
 import kr.hs.dgsw.mmr.databinding.ActivityMainBinding
-import kr.hs.dgsw.mmr.factory.MainViewModelFactory
+import kr.hs.dgsw.mmr.factory.NoParameterViewModelFactory
 import kr.hs.dgsw.mmr.view.fragment.HomeFragment
 import kr.hs.dgsw.mmr.view.fragment.ProfileFragment
 import kr.hs.dgsw.mmr.view.fragment.WriteFragment
@@ -26,12 +26,11 @@ enum class FragmentEnum {
 
 class MainActivity() : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
-    lateinit var viewModelFactory: MainViewModelFactory
     lateinit var host: NavHostFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         viewModel =
-            ViewModelProvider(this, MainViewModelFactory()).get(MainViewModel::class.java)
+            ViewModelProvider(this, NoParameterViewModelFactory()).get(MainViewModel::class.java)
         super.onCreate(savedInstanceState)
 
 
