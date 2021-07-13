@@ -77,6 +77,7 @@ abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment
         } catch (e: NoSuchFieldException) {
             e.printStackTrace()
         }
+
         return 0
     }
 }
