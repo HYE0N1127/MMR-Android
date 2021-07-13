@@ -1,4 +1,4 @@
-package kr.hs.dgsw.MMR_Android
+package kr.hs.dgsw.mmr
 
 import org.junit.Test
 
