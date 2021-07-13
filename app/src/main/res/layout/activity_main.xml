@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="kr.hs.dgsw.mmr.viewmodel.activity.MainViewModel" />
@@ -12,51 +13,56 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.activity.MainActivity"
-        android:orientation="vertical">
-        
+        android:orientation="vertical"
+        tools:context=".view.activity.MainActivity">
+
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/bar_main"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/bar_main"
             android:backgroundTint="@color/white">
-            
+
             <Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
-                    
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_toolbar_logo"/>
-                    
+                        android:src="@drawable/ic_toolbar_logo" />
+
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_weight="1"/>
-                    
+                        android:layout_weight="1" />
+
                     <ImageView
-                        android:id="@+id/btn_open_profile"
+                        android:id="@+id/btn_setting"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_profile"
-                        android:layout_marginEnd="20dp"/>
-                    
+                        android:layout_marginEnd="20dp"
+                        android:onClick="@{vm::openSetting}"
+                        android:src="@drawable/ic_setting" />
+
                 </LinearLayout>
             </Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <FrameLayout
-            android:id="@+id/fragment_layout"
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/nav_bottom_bar"
@@ -65,6 +71,7 @@
             app:itemIconTint="@color/bottom_navi_color"
             app:itemTextColor="@color/black"
             app:labelVisibilityMode="selected"
-            app:menu="@menu/bottom_menu"/>
+            app:menu="@menu/bottom_menu" />
+
     </LinearLayout>
 </layout>
