@@ -12,10 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MMR_Android"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.activity.PostDetailActivity"></activity>
-        <activity android:name=".view.activity.SettingActivity" />
-        <activity android:name=".view.activity.SignUpActivity" />
-        <activity android:name=".view.activity.LoginActivity">
+        <activity android:name=".view.activity.ManagePostActivity"></activity>
+        <activity android:name=".view.activity.StoreMaterialActivity" />
+        <activity
+            android:name=".view.activity.MainActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".view.activity.SettingActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".view.activity.SignUpActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".view.activity.LoginActivity"
+            android:windowSoftInputMode="adjustPan">
+          <activity android:name=".view.activity.PostDetailActivity"></activity>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
