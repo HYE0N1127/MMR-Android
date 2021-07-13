@@ -7,18 +7,24 @@
 
     </data>
 
-    <FrameLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/manage_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".view.activity.ManagePostActivity">
+        android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_manage_list"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item_post"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            tools:context=".view.activity.ManagePostActivity">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_manage_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_post" />
 
 
-    </FrameLayout>
+        </FrameLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

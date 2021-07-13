@@ -27,12 +27,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             viewModelStore,
             NoParameterViewModelFactory()
         ).get(HomeViewModel::class.java)
-
         return super.onCreateView(inflater, container, savedInstanceState)
+
+
     }
 
     override fun observerViewModel() {
         mBinding.rvPostList.adapter = viewModel.adapter
+        mBinding.homeRefresh.setOnRefreshListener {
+            mBinding.homeRefresh.isRefreshing = false
+            mViewModel.getAllPost()
+        }
 
         with(mViewModel) {
             adapter.context = this@HomeFragment.requireContext()
