@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import kr.hs.dgsw.mmr.R
 import kr.hs.dgsw.mmr.BR
 import java.lang.reflect.ParameterizedType
+import java.lang.reflect.Type
 import java.util.*
 
 abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
