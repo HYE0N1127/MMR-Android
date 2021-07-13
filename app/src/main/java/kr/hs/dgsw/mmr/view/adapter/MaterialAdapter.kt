@@ -1,5 +1,7 @@
 package kr.hs.dgsw.mmr.view.adapter
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -42,6 +44,10 @@ class MaterialAdapter : RecyclerView.Adapter<MaterialAdapter.MaterialViewHolder>
         fun bind(materialRequest: MaterialRequest) {
             binding.tvName.text = materialRequest.name
             binding.tvUrl.text = materialRequest.url
+            itemView.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(materialRequest.url))
+                it.context.startActivity(intent)
+            }
         }
     }
 }
