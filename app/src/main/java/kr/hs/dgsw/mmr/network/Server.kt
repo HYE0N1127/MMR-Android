@@ -10,7 +10,7 @@ object Server {
     val retrofit = Retrofit.Builder()
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl("localhost:8080/v1")
+        .baseUrl("http://172.28.109.27:8080/v1/")
         .build()
         .create(Api::class.java)
 

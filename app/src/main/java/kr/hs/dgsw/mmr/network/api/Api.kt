@@ -19,10 +19,10 @@ interface Api {
     @POST("user/register")
     fun register(@Body registerRequest: RegisterRequest): Single<Response<BaseResponse<Boolean>>>
 
-    @GET("")
+    @GET("post")
     fun getAllPost(): Single<Response<BaseResponse<List<PostResponse>>>>
 
-    @GET("/{id}")
+    @GET("post/{id}")
     fun getPostById(@Path("id") postId: Int): Single<Response<BaseResponse<PostResponse>>>
 
     @POST("post")
