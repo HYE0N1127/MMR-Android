@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import kr.hs.dgsw.mmr.R
 import kr.hs.dgsw.mmr.base.BaseActivity
 import kr.hs.dgsw.mmr.databinding.ActivitySignUpBinding
-import kr.hs.dgsw.mmr.databinding.ActivitySignUpBindingImpl
 import kr.hs.dgsw.mmr.viewmodel.activity.SignUpViewModel
 
 class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
