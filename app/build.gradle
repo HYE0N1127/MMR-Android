@@ -76,4 +76,7 @@ dependencies {
     // LiveData & ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
+
+    // Shared Preference
+    implementation 'androidx.preference:preference-ktx:1.1.1'
 }

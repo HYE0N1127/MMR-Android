@@ -31,7 +31,6 @@ class LoginViewModel : BaseViewModel() {
                 override fun onError(e: Throwable) {
                     onErrorEvent.value = e
                 }
-
             })
     }
 
