@@ -13,12 +13,12 @@ class SignUpViewModel : BaseViewModel() {
 
     val id = MutableLiveData<String>()
     val pw = MutableLiveData<String>()
-    val check_pw = MutableLiveData<String>()
+    val checkPw = MutableLiveData<String>()
     val name = MutableLiveData<String>()
 
     val error = MutableLiveData<Throwable>()
 
-    fun register(id: String, pw: String, name: String) {
+    private fun register(id: String, pw: String, name: String) {
         addDisposable(repository.register(id, pw, name),
             object : DisposableSingleObserver<Boolean>() {
                 override fun onSuccess(t: Boolean) {
@@ -33,7 +33,9 @@ class SignUpViewModel : BaseViewModel() {
     }
 
     fun onClickRegister(view: View) {
-        if (check_pw.equals(pw)) {
+        if (id.value == null || pw.value == null || name.value == null) error.value =
+            Throwable("빈 칸 없이 적어 주세요")
+        else if (checkPw.value == pw.value) {
             register(id.value.toString(), pw.value.toString(), name.value.toString())
         } else {
             error.value = Throwable("비밀번호가 맞지 않습니다.")

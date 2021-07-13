@@ -84,7 +84,7 @@
             android:paddingLeft="20dp"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
-            android:text="@={vm.check_pw}"
+            android:text="@={vm.checkPw}"
             android:textSize="20dp" />
 
         <androidx.appcompat.widget.AppCompatButton
