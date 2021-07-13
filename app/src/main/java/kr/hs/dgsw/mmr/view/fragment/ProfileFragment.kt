@@ -4,15 +4,13 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import kr.hs.dgsw.mmr.R
 import kr.hs.dgsw.mmr.base.BaseFragment
 import kr.hs.dgsw.mmr.databinding.FragmentProfileBinding
 import kr.hs.dgsw.mmr.factory.NoParameterViewModelFactory
@@ -23,7 +21,8 @@ import kr.hs.dgsw.mmr.viewmodel.fragment.ProfileViewModel
 class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>() {
 
     private lateinit var mPreferences: SharedPreferences
-
+    var originalName = ""
+    var userId = ""
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,21 +32,20 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
             viewModelStore,
             NoParameterViewModelFactory()
         ).get(ProfileViewModel::class.java)
-        mPreferences =
-            requireActivity().getSharedPreferences("LoginActivity", AppCompatActivity.MODE_PRIVATE)
-
-        val name = mPreferences.getString("name", "")
-        viewModel.setName(name!!)
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun observerViewModel() {
         with(mViewModel) {
-            changeNameEvent.observe(this@ProfileFragment, {
-                Log.d("MYTAG", "click : ${name.value}")
-
-
-            })
+            mPreferences =
+                requireActivity().getSharedPreferences(
+                    "LoginActivity",
+                    AppCompatActivity.MODE_PRIVATE
+                )
+            originalName = mPreferences.getString("name", "").toString()
+            userId = mPreferences.getString("id", "").toString()
+            name.value = originalName
+            Log.d("TESTTEST", "$userId ${name.value}")
             storeMaterialEvent.observe(this@ProfileFragment, {
                 val intent = Intent(activity, StoreMaterialActivity::class.java)
                 startActivity(intent)
@@ -59,12 +57,15 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
             })
 
             name.observe(this@ProfileFragment, Observer {
-                if (!hasNamed.value!!) {
-                    Log.d("MYTAG", "false")
-                    hasNamed.value = true
-                } else {
-                    Log.d("MYTAG", "Change Name : ${name.value}")
-                    canClick.value = true
+                canClick.value = it != originalName && !it.isNullOrBlank()
+            })
+            mBinding.btnChangeName.setOnClickListener {
+                modifyName(userId)
+            }
+            modifyNameResult.observe(this@ProfileFragment, {
+                Toast.makeText(context, if (it) "수정 성공" else "수정 실패", Toast.LENGTH_SHORT).show()
+                if (it) {
+                    mPreferences.edit().putString("name", name.value.toString()).apply()
                 }
             })
         }

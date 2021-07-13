@@ -20,14 +20,20 @@ class PostDetailActivity : BaseActivity<ActivityPostDetailBinding, PostDetailVie
         super.onCreate(savedInstanceState)
         mViewModel.detailPostGetData(postId)
         mViewModel.checkLikePost(postId, userId ?: "")
+<<<<<<< feat/modify_name
+=======
         mBinding.detailRefresh.setOnRefreshListener {
             mBinding.detailRefresh.isRefreshing = false
             mViewModel.detailPostGetData(postId)
         }
+>>>>>>> Develope
     }
 
     override fun observerViewModel() {
         with(mViewModel) {
+            postId = intent.getIntExtra("postId", 0)
+            userId =
+                getSharedPreferences("LoginActivity", MODE_PRIVATE).getString("id", "").toString()
             detailResponse.observe(this@PostDetailActivity, {
                 Glide.with(this@PostDetailActivity)
                     .load(it.imgUrl)
