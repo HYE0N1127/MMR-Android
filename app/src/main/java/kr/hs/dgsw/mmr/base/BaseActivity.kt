@@ -15,7 +15,7 @@ abstract class BaseActivity<VB : ViewDataBinding, VM : BaseViewModel> : AppCompa
     protected lateinit var mBinding: VB
     protected lateinit var mViewModel: VM
 
-    protected lateinit  var viewModel: VM
+    protected lateinit var viewModel: VM
 
     protected abstract fun observerViewModel()
 

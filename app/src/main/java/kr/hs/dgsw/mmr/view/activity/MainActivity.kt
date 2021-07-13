@@ -33,12 +33,9 @@ class MainActivity() : BaseActivity<ActivityMainBinding, MainViewModel>() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         viewModel =
             ViewModelProvider(this, MainViewModelFactory()).get(MainViewModel::class.java)
-
         super.onCreate(savedInstanceState)
-
     }
 
     override fun observerViewModel() {
