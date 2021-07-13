@@ -1,5 +1,6 @@
 package kr.hs.dgsw.mmr.viewmodel.activity
 
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.observers.DisposableSingleObserver
@@ -15,9 +16,12 @@ class LoginViewModel : BaseViewModel() {
     val loginResult = MutableLiveData<String>()
     val registerResult = MutableLiveData<Boolean>()
 
+    val id = MutableLiveData<String>()
+    val pw = MutableLiveData<String>()
+
     val error = MutableLiveData<Throwable>()
 
-    fun login(id: String, pw: String) {
+    private fun login(id: String, pw: String) {
         addDisposable(userRepository.login(id, pw),
             object : DisposableSingleObserver<String>() {
                 override fun onSuccess(t: String) {
@@ -43,6 +47,12 @@ class LoginViewModel : BaseViewModel() {
                 }
 
             })
+    }
+
+    fun onClickLogin(view: View) {
+        if (id.value != null && pw.value != null)
+            login(id.value!!, pw.value!!)
+        else error.value = Throwable("아이디와 패스워드를 입력해 주세요")
     }
 
 
