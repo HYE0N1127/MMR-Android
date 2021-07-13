@@ -8,9 +8,9 @@ import kr.hs.dgsw.mmr.view.activity.FragmentEnum
 
 class MainViewModel : BaseViewModel() {
     val currentPage = MutableLiveData(FragmentEnum.Home)
-    val openProfileEvent = SingleLiveEvent<Unit>()
+    val openSettingEvent = SingleLiveEvent<Unit>()
 
-    fun openProfile(view: View) {
-        
+    fun openSetting(view: View) {
+        openSettingEvent.call()
     }
 }

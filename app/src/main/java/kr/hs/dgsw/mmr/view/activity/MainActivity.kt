@@ -1,6 +1,8 @@
 package kr.hs.dgsw.mmr.view.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -65,8 +67,17 @@ class MainActivity() : BaseActivity<ActivityMainBinding, MainViewModel>() {
                     else -> {}
                 }
             })
+
+            openSettingEvent.observe(this@MainActivity, {
+                val intent = Intent(this@MainActivity, SettingActivity::class.java)
+                startActivity(intent)
+            })
         }
     }
 
+    override fun onErrorEvent(e: Throwable) {
+        super.onErrorEvent(e)
+        Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+    }
 
 }

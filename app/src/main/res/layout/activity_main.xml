@@ -42,11 +42,11 @@
                         android:layout_weight="1"/>
                     
                     <ImageView
-                        android:id="@+id/btn_open_profile"
-                        android:onClick="@{vm::openProfile}"
+                        android:id="@+id/btn_setting"
+                        android:onClick="@{vm::openSetting}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_profile"
+                        android:src="@drawable/ic_setting"
                         android:layout_marginEnd="20dp"/>
                     
                 </LinearLayout>
