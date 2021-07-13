@@ -18,7 +18,6 @@ enum class FragmentEnum {
 
 class MainActivity() : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
-    lateinit var viewModelFactory: NoParameterViewModelFactory
     lateinit var host: NavHostFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {

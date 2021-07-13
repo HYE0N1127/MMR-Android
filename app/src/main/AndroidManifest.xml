@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MMR_Android"
         android:usesCleartextTraffic="true">
-        <activity android:name=".viewmodel.activity.AddMaterialActivity"></activity>
+        <activity android:name=".view.activity.PostDetailActivity"></activity>
         <activity android:name=".view.activity.SettingActivity" />
         <activity android:name=".view.activity.SignUpActivity" />
-        <activity android:name=".view.activity.LoginActivity"></activity>
+        <activity android:name=".view.activity.LoginActivity" />
         <activity android:name=".view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

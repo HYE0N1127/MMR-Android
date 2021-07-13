@@ -32,8 +32,8 @@ class SignUpViewModel : BaseViewModel() {
             })
     }
 
-    fun onClickRegister(view: View){
-        if(check_pw.equals(pw)){
+    fun onClickRegister(view: View) {
+        if (check_pw.equals(pw)) {
             register(id.value.toString(), pw.value.toString(), name.value.toString())
         } else {
             error.value = Throwable("비밀번호가 맞지 않습니다.")
