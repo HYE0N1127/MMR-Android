@@ -1,6 +1,5 @@
 package kr.hs.dgsw.mmr.repository
 
-import com.google.gson.JsonObject
 import io.reactivex.Single
 import kr.hs.dgsw.mmr.network.Server
 import kr.hs.dgsw.mmr.network.model.request.CreatePostRequest
@@ -66,9 +65,9 @@ class PostRepository {
             it.body()!!.data
         }
     }
-    
-    fun getMyPost(userId: String) : Single<List<PostResponse>>{
-        return Server.retrofit.getMyPost(userId).map{
+
+    fun getMyPost(userId: String): Single<List<PostResponse>> {
+        return Server.retrofit.getMyPost(userId).map {
             if (!it.isSuccessful) {
                 val errorBody = JSONObject(it.errorBody().toString())
                 throw Throwable(errorBody.getString("message"))

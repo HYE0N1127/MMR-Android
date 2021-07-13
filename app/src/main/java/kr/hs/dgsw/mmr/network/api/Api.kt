@@ -1,10 +1,7 @@
 package kr.hs.dgsw.mmr.network.api
 
 import io.reactivex.Single
-import kr.hs.dgsw.mmr.network.model.request.CreatePostRequest
-import kr.hs.dgsw.mmr.network.model.request.DeletePostRequest
-import kr.hs.dgsw.mmr.network.model.request.LoginRequest
-import kr.hs.dgsw.mmr.network.model.request.RegisterRequest
+import kr.hs.dgsw.mmr.network.model.request.*
 import kr.hs.dgsw.mmr.network.model.response.BaseResponse
 import kr.hs.dgsw.mmr.network.model.response.PostResponse
 import retrofit2.Response
@@ -45,5 +42,8 @@ interface Api {
 
     @GET("post/my/{userId}")
     fun getMyPost(@Path("userId") userId: String): Single<Response<BaseResponse<List<PostResponse>>>>
+
+    @PUT("user")
+    fun modifyName(@Body modifyNameRequest: ModifyNameRequest): Single<Response<BaseResponse<Boolean>>>
 
 }

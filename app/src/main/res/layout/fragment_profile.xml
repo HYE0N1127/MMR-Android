@@ -46,7 +46,6 @@
 
                 <ImageView
                     android:id="@+id/btn_change_name"
-                    android:onClick="@{vm::changeName}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"

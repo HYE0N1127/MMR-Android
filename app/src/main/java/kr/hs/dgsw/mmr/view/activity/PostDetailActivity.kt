@@ -11,18 +11,20 @@ import kr.hs.dgsw.mmr.viewmodel.activity.PostDetailViewModel
 
 class PostDetailActivity : BaseActivity<ActivityPostDetailBinding, PostDetailViewModel>() {
 
-    val postId = intent.getIntExtra("postId", 0)
-    val userId = getSharedPreferences("LoginActivity", MODE_PRIVATE).getString("id", "")
-
+    var postId = 0
+    var userId = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(this).get(PostDetailViewModel::class.java)
         super.onCreate(savedInstanceState)
         mViewModel.detailPostGetData(postId)
-        mViewModel.checkLikePost(postId, userId?:"")
+        mViewModel.checkLikePost(postId, userId ?: "")
     }
 
     override fun observerViewModel() {
         with(mViewModel) {
+            postId = intent.getIntExtra("postId", 0)
+            userId =
+                getSharedPreferences("LoginActivity", MODE_PRIVATE).getString("id", "").toString()
             detailResponse.observe(this@PostDetailActivity, {
                 Glide.with(this@PostDetailActivity)
                     .load(it.imgUrl)
@@ -44,11 +46,11 @@ class PostDetailActivity : BaseActivity<ActivityPostDetailBinding, PostDetailVie
             })
 
             isLike.observe(this@PostDetailActivity, {
-                mBinding.btnLike.setImageResource( if(it)R.drawable.ic_good_true else R.drawable.ic_good)
+                mBinding.btnLike.setImageResource(if (it) R.drawable.ic_good_true else R.drawable.ic_good)
             })
 
             mBinding.btnLike.setOnClickListener {
-                likePost(postId, userId?:"")
+                likePost(postId, userId ?: "")
             }
         }
     }
