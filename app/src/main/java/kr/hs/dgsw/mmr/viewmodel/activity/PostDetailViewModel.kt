@@ -7,28 +7,55 @@ import kr.hs.dgsw.mmr.network.model.response.PostResponse
 import kr.hs.dgsw.mmr.repository.PostRepository
 import kr.hs.dgsw.mmr.view.adapter.MaterialAdapter
 
-class PostDetailViewModel: BaseViewModel() {
+class PostDetailViewModel : BaseViewModel() {
     private val repository = PostRepository()
 
+    val isLike = MutableLiveData(false)
+    val like = MutableLiveData(false)
     val detailResponse = MutableLiveData<PostResponse>()
-
-    val postId = MutableLiveData<Int>()
 
     val adapter = MaterialAdapter()
 
-    fun detailPostGetData(postId: Int){
+    fun detailPostGetData(postId: Int) {
         addDisposable(repository.getPostByUserId(postId),
-        object : DisposableSingleObserver<PostResponse>(){
-            override fun onSuccess(t: PostResponse) {
-                detailResponse.value = t
-                //재료 보여주기
-                //사진 처리
-                // 버튼 클릭
-            }
+            object : DisposableSingleObserver<PostResponse>() {
+                override fun onSuccess(t: PostResponse) {
+                    detailResponse.value = t
+                }
 
-            override fun onError(e: Throwable) {
-                onErrorEvent.value = e
-            }
-        })
+                override fun onError(e: Throwable) {
+                    onErrorEvent.value = e
+                }
+            })
     }
+
+    fun checkLikePost(postId: Int, userId: String) {
+        addDisposable(repository.checkLikePost(postId, userId),
+            object : DisposableSingleObserver<Boolean>() {
+                override fun onSuccess(t: Boolean) {
+                    isLike.value = t
+                }
+
+                override fun onError(e: Throwable) {
+                    onErrorEvent.value = e
+                }
+
+            })
+    }
+
+    fun likePost(postId: Int, userId: String) {
+        addDisposable(repository.likePost(postId, userId),
+            object : DisposableSingleObserver<Boolean>() {
+                override fun onSuccess(t: Boolean) {
+                    like.value = t
+                    checkLikePost(postId, userId)
+                }
+
+                override fun onError(e: Throwable) {
+                    onErrorEvent.value = e
+                }
+
+            })
+    }
+
 }

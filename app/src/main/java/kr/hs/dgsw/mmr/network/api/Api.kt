@@ -37,6 +37,12 @@ interface Api {
         @Path("postId") postId: Int
     ): Single<Response<BaseResponse<Boolean>>>
 
+    @GET("post/like/{userId}/{postId}")
+    fun checkLikePost(
+        @Path("userId") userId: String,
+        @Path("postId") postId: Int
+    ): Single<Response<BaseResponse<Boolean>>>
+
     @GET("post/my/{userId}")
     fun getMyPost(@Path("userId") userId: String): Single<Response<BaseResponse<List<PostResponse>>>>
 
