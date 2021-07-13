@@ -20,9 +20,10 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
         with(mViewModel){
             registerResult.observe(this@SignUpActivity, {
                 Toast.makeText(this@SignUpActivity, "회원 가입 성공! ${it}", Toast.LENGTH_SHORT).show()
+                finish()
             })
             error.observe(this@SignUpActivity,{
-                Toast.makeText(this@SignUpActivity, "회원 가입 실패 ${it}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@SignUpActivity, "회원 가입 실패 ${it.message}", Toast.LENGTH_SHORT).show()
             })
         }
     }
