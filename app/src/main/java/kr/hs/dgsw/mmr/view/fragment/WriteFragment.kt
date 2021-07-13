@@ -1,22 +1,22 @@
 package kr.hs.dgsw.mmr.view.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import android.widget.Toast
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.navigation.fragment.findNavController
 import kr.hs.dgsw.mmr.R
 import kr.hs.dgsw.mmr.base.BaseFragment
-import kr.hs.dgsw.mmr.base.BaseViewModel
 import kr.hs.dgsw.mmr.databinding.FragmentWriteBinding
-import kr.hs.dgsw.mmr.databinding.FragmentWriteBindingImpl
 import kr.hs.dgsw.mmr.factory.NoParameterViewModelFactory
+import kr.hs.dgsw.mmr.network.model.request.MaterialRequest
 import kr.hs.dgsw.mmr.viewmodel.fragment.WriteViewModel
 
-class WriteFragment : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
+class WriteFragment() : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +32,43 @@ class WriteFragment : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
     override fun observerViewModel() {
         with(mViewModel) {
 
+            mBinding.rvMaterialList.adapter = adapter
+
+            mBinding.btnAddMaterial.setOnClickListener {
+
+                setFragmentResultListener("bundle") { key, bundle ->
+                    val material =
+                        MaterialRequest(
+                            bundle.getString("name", ""),
+                            bundle.getString("url", "")
+                        )
+                    materials.value?.add(material)
+                }
+//
+                findNavController().navigate(R.id.addMaterialFragment)
+
+            }
+
+            getWritePostRequest.observe(this@WriteFragment, {
+                if (it) {
+                    Toast.makeText(context, "성공적으로 작성하였습니다", Toast.LENGTH_SHORT).show()
+                    title.value = ""
+                    imgUrl.value = ""
+                    summary.value = ""
+                    content.value = ""
+                    materials.value = arrayListOf()
+                }
+            })
+            onErrorEvent.observe(this@WriteFragment, {
+                Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT).show()
+            })
+            materials.observe(this@WriteFragment, {
+                adapter.materialList = it
+                adapter.notifyDataSetChanged()
+            })
+
         }
     }
 }
+
+
