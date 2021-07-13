@@ -85,6 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:gravity="center"
+            android:onClick="@{vm::onClickRegister}"
             android:text="회원가입"
             android:textColor="#FFCCCC"
             android:textSize="16sp" />

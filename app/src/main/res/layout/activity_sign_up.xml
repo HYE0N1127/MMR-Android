@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.mmr.viewmodel.activity.SignUpViewModel" />
     </data>
 
     <LinearLayout
@@ -36,6 +39,7 @@
             android:paddingLeft="20dp"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
+            android:text="@={vm.id}"
             android:textSize="20dp" />
 
         <EditText
@@ -50,6 +54,7 @@
             android:paddingLeft="20dp"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
+            android:text="@={vm.name}"
             android:textSize="20dp" />
 
         <EditText
@@ -64,6 +69,7 @@
             android:paddingLeft="20dp"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
+            android:text="@={vm.pw}"
             android:textSize="20dp" />
 
         <EditText
@@ -78,6 +84,7 @@
             android:paddingLeft="20dp"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
+            android:text="@={vm.checkPw}"
             android:textSize="20dp" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -85,6 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_background"
+            android:onClick="@{vm::onClickRegister}"
             android:text="회원가입"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />

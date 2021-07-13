@@ -2,6 +2,7 @@ package kr.hs.dgsw.mmr.view.activity
 
 import android.content.Intent
 import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -34,6 +35,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
             error.observe(this@LoginActivity, {
                 Toast.makeText(this@LoginActivity, "${it.message}", Toast.LENGTH_SHORT).show()
             })
+            openSingUp.observe(this@LoginActivity, {
+                val intent = Intent(this@LoginActivity, SignUpActivity::class.java)
+                startActivity(intent)
+            })
+
         }
     }
 }

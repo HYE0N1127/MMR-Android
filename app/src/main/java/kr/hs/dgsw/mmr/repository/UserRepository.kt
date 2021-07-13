@@ -19,6 +19,9 @@ class UserRepository {
                 val errorBody = JSONObject(it.errorBody()!!.string())
                 throw Throwable(errorBody.getString("message"))
             }
+            if(it.body()?.code != 200) {
+                throw Throwable(it.body()?.message)
+            }
             it.body()!!.data
         }
     }
