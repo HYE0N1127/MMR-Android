@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
-        android:title="홈"/>
+        android:title="홈" />
 
     <item
-        android:id="@+id/write_post"
+        android:id="@+id/writeFragment"
         android:icon="@drawable/ic_write_post"
-        android:title="글쓰기"/>
+        android:title="글쓰기" />
 
     <item
-        android:id="@+id/profile"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile"
-        android:title="프로필"/>
+        android:title="프로필" />
 
 </menu>
