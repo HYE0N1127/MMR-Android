@@ -6,14 +6,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import kr.hs.dgsw.mmr.R
+import kr.hs.dgsw.mmr.base.BaseFragment
+import kr.hs.dgsw.mmr.base.BaseViewModel
+import kr.hs.dgsw.mmr.databinding.FragmentWriteBinding
+import kr.hs.dgsw.mmr.databinding.FragmentWriteBindingImpl
+import kr.hs.dgsw.mmr.factory.NoParameterViewModelFactory
+import kr.hs.dgsw.mmr.viewmodel.fragment.WriteViewModel
 
-class WriteFragment : Fragment() {
+class WriteFragment : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_write, container, false)
+        viewModel = ViewModelProvider(
+            viewModelStore,
+            NoParameterViewModelFactory()
+        ).get(WriteViewModel::class.java)
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun observerViewModel() {
+        with(mViewModel) {
+
+        }
     }
 }
