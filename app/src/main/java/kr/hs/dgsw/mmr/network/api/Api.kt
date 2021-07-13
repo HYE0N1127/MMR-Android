@@ -37,5 +37,7 @@ interface Api {
         @Path("postId") postId: Int
     ): Single<Response<BaseResponse<Boolean>>>
 
+    @GET("post/my/{userId}")
+    fun getMyPost(@Path("userId") userId: String): Single<Response<BaseResponse<List<PostResponse>>>>
 
 }

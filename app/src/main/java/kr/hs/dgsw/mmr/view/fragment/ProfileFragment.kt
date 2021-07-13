@@ -24,9 +24,17 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
 
     private lateinit var mPreferences: SharedPreferences
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewModel = ViewModelProvider(viewModelStore, NoParameterViewModelFactory()).get(ProfileViewModel::class.java)
-        mPreferences = requireActivity().getSharedPreferences("LoginActivity", AppCompatActivity.MODE_PRIVATE)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        viewModel = ViewModelProvider(
+            viewModelStore,
+            NoParameterViewModelFactory()
+        ).get(ProfileViewModel::class.java)
+        mPreferences =
+            requireActivity().getSharedPreferences("LoginActivity", AppCompatActivity.MODE_PRIVATE)
 
         val name = mPreferences.getString("name", "")
         viewModel.setName(name!!)
@@ -46,11 +54,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
             })
             managePostEvent.observe(this@ProfileFragment, {
                 val intent = Intent(activity, ManagePostActivity::class.java)
+                intent.putExtra("userId", mPreferences.getString("id", ""))
                 startActivity(intent)
             })
 
             name.observe(this@ProfileFragment, Observer {
-                if(!hasNamed.value!!) {
+                if (!hasNamed.value!!) {
                     Log.d("MYTAG", "false")
                     hasNamed.value = true
                 } else {

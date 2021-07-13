@@ -16,18 +16,18 @@ import kr.hs.dgsw.mmr.network.model.response.PostResponse
 import kr.hs.dgsw.mmr.view.activity.PostDetailActivity
 import kr.hs.dgsw.mmr.view.fragment.ProfileFragment
 
-class HomePostListAdapter() : RecyclerView.Adapter<HomePostListAdapter.HomePostViewHolder>() {
+class MyPostListAdapter() : RecyclerView.Adapter<MyPostListAdapter.MyPostViewHolder>() {
 
     var postResponse = ArrayList<PostResponse>()
     lateinit var context: Context
     lateinit var binding: ItemPostBinding
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomePostViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyPostListAdapter.MyPostViewHolder {
         binding = DataBindingUtil.inflate<ItemPostBinding>(LayoutInflater.from(parent.context), R.layout.item_post, parent, false)
-        return HomePostViewHolder(binding)
+        return MyPostViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: HomePostViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyPostViewHolder, position: Int) {
         holder.bind(postResponse[position], context)
     }
 
@@ -35,7 +35,7 @@ class HomePostListAdapter() : RecyclerView.Adapter<HomePostListAdapter.HomePostV
         return postResponse.size
     }
 
-    inner class HomePostViewHolder(val binding: ItemPostBinding): RecyclerView.ViewHolder(binding.root){
+    inner class MyPostViewHolder(val binding: ItemPostBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(postResponse: PostResponse, context: Context) {
             binding.tvPostTitle.text = postResponse.title
             binding.tvHeart.text = postResponse.likeNum.toString()
@@ -44,11 +44,6 @@ class HomePostListAdapter() : RecyclerView.Adapter<HomePostListAdapter.HomePostV
             Glide.with(context)
                 .load(postResponse.imgUrl)
                 .into(binding.itemImage)
-            itemView.setOnClickListener {
-                val intent = Intent(context, PostDetailActivity::class.java)
-                intent.putExtra("postId", postResponse.id)
-                context.startActivity(intent)
-            }
         }
 
     }

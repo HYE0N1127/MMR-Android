@@ -1,5 +1,6 @@
 package kr.hs.dgsw.mmr.repository
 
+import com.google.gson.JsonObject
 import io.reactivex.Single
 import kr.hs.dgsw.mmr.network.Server
 import kr.hs.dgsw.mmr.network.api.Api
@@ -21,7 +22,7 @@ class PostRepository {
     ): Single<Boolean> {
         val post = CreatePostRequest(userId, title, summary, content, imgUrl, materials)
         return Server.retrofit.createPost(post).map {
-            if(!it.isSuccessful) {
+            if (!it.isSuccessful) {
                 val errorBody = JSONObject(it.errorBody().toString())
                 throw Throwable(errorBody.getString("message"))
             }
@@ -30,8 +31,8 @@ class PostRepository {
     }
 
     fun getAllPost(): Single<List<PostResponse>> {
-        return Server.retrofit.getAllPost().map{
-            if(!it.isSuccessful){
+        return Server.retrofit.getAllPost().map {
+            if (!it.isSuccessful) {
                 val errorBody = JSONObject(it.errorBody().toString())
                 throw Throwable(errorBody.getString("message"))
             }
@@ -39,9 +40,19 @@ class PostRepository {
         }
     }
 
-    fun getPostByUserId(postId : Int): Single<PostResponse> {
-        return Server.retrofit.getPostById(postId).map{
-            if(!it.isSuccessful){
+    fun getPostByUserId(postId: Int): Single<PostResponse> {
+        return Server.retrofit.getPostById(postId).map {
+            if (!it.isSuccessful) {
+                val errorBody = JSONObject(it.errorBody().toString())
+                throw Throwable(errorBody.getString("message"))
+            }
+            it.body()!!.data
+        }
+    }
+
+    fun getMyPost(userId: String) : Single<List<PostResponse>>{
+        return Server.retrofit.getMyPost(userId).map{
+            if (!it.isSuccessful) {
                 val errorBody = JSONObject(it.errorBody().toString())
                 throw Throwable(errorBody.getString("message"))
             }

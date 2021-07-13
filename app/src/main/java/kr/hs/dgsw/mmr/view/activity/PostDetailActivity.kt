@@ -37,7 +37,6 @@ class PostDetailActivity : BaseActivity<ActivityPostDetailBinding, PostDetailVie
                         it.url
                     )
                 } as ArrayList<MaterialRequest>
-
             })
         }
     }
