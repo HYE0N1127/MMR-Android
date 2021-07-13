@@ -1,9 +1,9 @@
 package kr.hs.dgsw.mmr.repository
 
-import com.google.gson.JsonObject
 import io.reactivex.Single
 import kr.hs.dgsw.mmr.network.Server
 import kr.hs.dgsw.mmr.network.model.request.CreatePostRequest
+import kr.hs.dgsw.mmr.network.model.request.DeletePostRequest
 import kr.hs.dgsw.mmr.network.model.request.MaterialRequest
 import kr.hs.dgsw.mmr.network.model.response.PostResponse
 import org.json.JSONObject
@@ -70,6 +70,17 @@ class PostRepository {
     fun getMyPost(userId: String) : Single<List<PostResponse>>{
         return Server.retrofit.getMyPost(userId).map{
             if (!it.isSuccessful) {
+                val errorBody = JSONObject(it.errorBody().toString())
+                throw Throwable(errorBody.getString("message"))
+            }
+            it.body()!!.data
+        }
+    }
+
+    fun deleteMyPost(userId: String, postId: Int) : Single<Boolean> {
+        val deletePostRequest = DeletePostRequest(postId , userId)
+        return Server.retrofit.deletePost(deletePostRequest).map {
+            if(!it.isSuccessful) {
                 val errorBody = JSONObject(it.errorBody().toString())
                 throw Throwable(errorBody.getString("message"))
             }
