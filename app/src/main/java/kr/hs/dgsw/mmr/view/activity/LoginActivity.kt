@@ -2,15 +2,10 @@ package kr.hs.dgsw.mmr.view.activity
 
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.preference.PreferenceManager
-import kr.hs.dgsw.mmr.R
 import kr.hs.dgsw.mmr.base.BaseActivity
-import kr.hs.dgsw.mmr.base.BaseFragment
 import kr.hs.dgsw.mmr.databinding.ActivityLoginBinding
 import kr.hs.dgsw.mmr.viewmodel.activity.LoginViewModel
 
