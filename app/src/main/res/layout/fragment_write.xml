@@ -65,6 +65,7 @@
                         android:layout_marginTop="50dp"
                         android:backgroundTint="@color/white"
                         android:hint="제목 (50자)"
+                        android:maxLength="50"
                         android:text="@={vm.title}" />
 
                     <View
@@ -78,6 +79,7 @@
                         android:backgroundTint="@color/white"
                         android:gravity="top"
                         android:hint="간단 소개 (50자)"
+                        android:maxLength="50"
                         android:text="@={vm.summary}" />
 
                     <View
@@ -91,6 +93,7 @@
                         android:backgroundTint="@color/white"
                         android:gravity="top"
                         android:hint="조리 방법 (500자)"
+                        android:maxLength="500"
                         android:text="@={vm.content}" />
 
                     <View

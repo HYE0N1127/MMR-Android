@@ -44,6 +44,11 @@ class MyPostListAdapter() : RecyclerView.Adapter<MyPostListAdapter.MyPostViewHol
             Glide.with(context)
                 .load(postResponse.imgUrl)
                 .into(binding.itemImage)
+            itemView.setOnClickListener {
+                val intent = Intent(context, PostDetailActivity::class.java)
+                intent.putExtra("postId", postResponse.id)
+                context.startActivity(intent)
+            }
         }
 
     }
