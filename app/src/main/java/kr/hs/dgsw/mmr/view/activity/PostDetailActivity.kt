@@ -20,13 +20,10 @@ class PostDetailActivity : BaseActivity<ActivityPostDetailBinding, PostDetailVie
         super.onCreate(savedInstanceState)
         mViewModel.detailPostGetData(postId)
         mViewModel.checkLikePost(postId, userId ?: "")
-<<<<<<< feat/modify_name
-=======
         mBinding.detailRefresh.setOnRefreshListener {
             mBinding.detailRefresh.isRefreshing = false
             mViewModel.detailPostGetData(postId)
         }
->>>>>>> Develope
     }
 
     override fun observerViewModel() {
