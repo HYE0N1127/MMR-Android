@@ -41,7 +41,6 @@ class PostDetailActivity : BaseActivity<ActivityPostDetailBinding, PostDetailVie
                         it.url
                     )
                 } as ArrayList<MaterialRequest>
-
             })
 
             isLike.observe(this@PostDetailActivity, {

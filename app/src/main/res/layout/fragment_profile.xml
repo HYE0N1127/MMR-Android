@@ -41,7 +41,7 @@
                     android:layout_marginTop="50dp"
                     android:text="@={vm.name}"
                     android:maxLines="1"
-                    android:maxLength="5"
+                    android:maxLength="50"
                     android:hint="이름" />
 
                 <ImageView
