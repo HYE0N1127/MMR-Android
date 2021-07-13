@@ -1,0 +1,2 @@
+rootProject.name = "MMR_Android"
+include ':app'
