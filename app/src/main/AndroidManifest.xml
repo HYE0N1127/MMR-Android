@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MMR_Android"
         android:usesCleartextTraffic="true">
-        <activity android:name="kr.hs.dgsw.mmr.MainActivity">
+        <activity android:name="kr.hs.dgsw.mmr.view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
