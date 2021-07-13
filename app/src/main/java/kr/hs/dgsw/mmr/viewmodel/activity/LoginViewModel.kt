@@ -14,7 +14,6 @@ class LoginViewModel : BaseViewModel() {
     private val userRepository = UserRepository()
 
     val loginResult = MutableLiveData<String>()
-    val registerResult = MutableLiveData<Boolean>()
 
     val id = MutableLiveData<String>()
     val pw = MutableLiveData<String>()
@@ -30,20 +29,6 @@ class LoginViewModel : BaseViewModel() {
 
                 override fun onError(e: Throwable) {
                     onErrorEvent.value = e
-                }
-
-            })
-    }
-
-    fun register(id: String, pw: String, name: String) {
-        addDisposable(userRepository.register(id, pw, name),
-            object : DisposableSingleObserver<Boolean>() {
-                override fun onSuccess(t: Boolean) {
-                    registerResult.value = t
-                }
-
-                override fun onError(e: Throwable) {
-                    error.value = e
                 }
 
             })
