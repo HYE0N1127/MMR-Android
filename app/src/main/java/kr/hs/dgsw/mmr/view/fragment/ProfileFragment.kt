@@ -45,7 +45,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
             originalName = mPreferences.getString("name", "").toString()
             userId = mPreferences.getString("id", "").toString()
             name.value = originalName
-            Log.d("TESTTEST", "$userId ${name.value}")
+
             storeMaterialEvent.observe(this@ProfileFragment, {
                 val intent = Intent(activity, StoreMaterialActivity::class.java)
                 startActivity(intent)

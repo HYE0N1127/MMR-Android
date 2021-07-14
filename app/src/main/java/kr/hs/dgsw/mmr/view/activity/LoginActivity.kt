@@ -37,6 +37,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                 startActivity(intent)
+                finish()
             })
             error.observe(this@LoginActivity, {
                 Toast.makeText(this@LoginActivity, "${it.message}", Toast.LENGTH_SHORT).show()

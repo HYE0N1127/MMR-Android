@@ -25,7 +25,6 @@ class ManagePostActivity : BaseActivity<ActivityManagePostBinding, ManagePostVie
         val postId = intent.getIntExtra("postId", 0)
         userId = intent.getStringExtra("userId").toString()
 
-        Log.e("!", userId.toString())
         viewModel.getMyPost(userId.toString())
         viewModel.deleteMyPost(userId.toString(), postId)
 

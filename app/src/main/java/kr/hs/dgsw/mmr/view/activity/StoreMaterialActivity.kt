@@ -24,8 +24,6 @@ class StoreMaterialActivity : AppCompatActivity() {
 
         val string = getSharedPreferences("LOGIN_ACTIVITY", MODE_PRIVATE).getString("material", "")
 
-        Log.d("시발", "$string")
-
         string?.split(STRING)?.forEach {
             val strings = it.split(STRING2)
             if (strings.size == 2) adapter.materialList.add(MaterialRequest(strings[0], strings[1]))
