@@ -60,7 +60,7 @@ class WriteViewModel() : BaseViewModel() {
         if (title.value == null || summary.value == null || content.value == null || imgUrl.value == null) {
             onErrorEvent.value = Throwable("빈 칸 없이 적어주세요")
         } else postWritePage(
-            userId.value?:"test",
+            userId.value!!,
             title.value!!,
             summary.value!!,
             content.value!!,

@@ -1,10 +1,12 @@
 package kr.hs.dgsw.mmr.view.fragment
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -17,6 +19,7 @@ import kr.hs.dgsw.mmr.viewmodel.fragment.WriteViewModel
 
 class WriteFragment() : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
 
+    private lateinit var mPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,14 +29,18 @@ class WriteFragment() : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
             viewModelStore,
             NoParameterViewModelFactory()
         ).get(WriteViewModel::class.java)
+
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
+
     override fun observerViewModel() {
         with(mViewModel) {
+            mPreferences = requireActivity().getSharedPreferences("LoginActivity", AppCompatActivity.MODE_PRIVATE)
+
+            userId.value = mPreferences.getString("id", "").toString()
 
             mBinding.rvMaterialList.adapter = adapter
-
             mBinding.btnAddMaterial.setOnClickListener {
 
                 setFragmentResultListener("bundle") { key, bundle ->
