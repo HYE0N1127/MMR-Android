@@ -35,6 +35,10 @@ class ManagePostActivity : BaseActivity<ActivityManagePostBinding, ManagePostVie
         }
     }
 
+    override fun onErrorEvent(e: Throwable) {
+
+    }
+
     override fun observerViewModel() {
 
         with(mViewModel) {

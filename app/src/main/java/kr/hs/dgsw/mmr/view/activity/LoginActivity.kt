@@ -25,7 +25,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     override fun observerViewModel() {
         with(mViewModel) {
             loginResult.observe(this@LoginActivity, {
-                Toast.makeText(this@LoginActivity, "로그인 성공 : $it", Toast.LENGTH_SHORT).show()
+
 
                 val preferencesEditor: SharedPreferences.Editor = mPreferences.edit()
                 preferencesEditor.putString("name", it)
