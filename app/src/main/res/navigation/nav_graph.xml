@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="kr.hs.dgsw.mmr.view.fragment.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="kr.hs.dgsw.mmr.view.fragment.ProfileFragment"
+        android:label="ProfileFragment">
+        <action
+            android:id="@+id/action_profileFragment_to_writeFragment"
+            app:destination="@id/writeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/writeFragment"
+        android:name="kr.hs.dgsw.mmr.view.fragment.WriteFragment"
+        android:label="WriteFragment">
+        <action
+            android:id="@+id/action_writeFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_writeFragment_to_addMaterialFragment"
+            app:destination="@id/addMaterialFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMaterialFragment"
+        android:name="kr.hs.dgsw.mmr.view.fragment.AddMaterialFragment"
+        android:label="AddMaterialFragment">
+    </fragment>
+
+</navigation>

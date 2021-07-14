@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.mmr.viewmodel.fragment.WriteViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".view.fragment.WriteFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="31dp"
+                    android:layout_marginBottom="71dp"
+                    android:background="@drawable/background_square"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="70dp"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_camera" />
+
+                        <EditText
+                            android:layout_width="200dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/background_square"
+                            android:gravity="center"
+                            android:hint="이미지 URL"
+                            android:text="@={vm.imgUrl}" />
+
+                    </LinearLayout>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:backgroundTint="@color/white"
+                        android:hint="제목 (50자)"
+                        android:maxLength="50"
+                        android:text="@={vm.title}" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:background="#ffcccc" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_height="80dp"
+                        android:backgroundTint="@color/white"
+                        android:gravity="top"
+                        android:hint="간단 소개 (50자)"
+                        android:maxLength="50"
+                        android:text="@={vm.summary}" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:background="#ffcccc" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:backgroundTint="@color/white"
+                        android:gravity="top"
+                        android:layout_marginHorizontal="5dp"
+                        android:hint="조리 방법 (500자)"
+                        android:maxLength="500"
+                        android:text="@={vm.content}" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:background="#ffcccc" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_material_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:itemCount="0"
+                        tools:listitem="@layout/item_material" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="150dp"
+                        android:id="@+id/btn_add_material"
+                        android:layout_height="30dp"
+                        android:background="@drawable/btn_background"
+                        android:text="재료(음식)추가" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="150dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/btn_background"
+                        android:onClick="@{vm::onClickCreatePost}"
+                        android:text="글 쓰기" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+</layout>

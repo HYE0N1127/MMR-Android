@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.mmr.viewmodel.activity.LoginViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="30dp"
+        tools:context=".view.activity.LoginActivity">
+
+        <ImageView
+            android:id="@+id/login_logo_image"
+            android:layout_width="120dp"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="40dp"
+            app:srcCompat="@drawable/ic_app_logo" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/login_editText_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/et_background"
+                android:maxLength="50"
+                android:hint="아이디"
+                android:inputType="text"
+                android:paddingLeft="40dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="@={vm.id}" />
+
+            <EditText
+                android:id="@+id/login_editText_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/et_background"
+                android:maxLength="100"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:paddingLeft="40dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="@={vm.pw}" />
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:buttonTint="#FFCCCC"
+            android:text="로그인 유지"
+            android:textColor="#B0B0B0" />
+
+        <TextView
+            android:id="@+id/login_textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8sp"
+            android:gravity="center"
+            android:text="아직 며느리도 모르는 레시피에 계정이 없으신가요?"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/login_textView_signUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:onClick="@{vm::onClickRegister}"
+            android:text="회원가입"
+            android:textColor="#FFCCCC"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_background"
+            android:onClick="@{vm::onClickLogin}"
+            android:text="로그인"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+</layout>

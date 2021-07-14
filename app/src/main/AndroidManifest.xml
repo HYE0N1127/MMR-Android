@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kr.hs.dgsw.MMR_Android">
+    package="kr.hs.dgsw.mmr">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -8,14 +11,29 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MMR_Android">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.MMR_Android"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".view.activity.ManagePostActivity"></activity>
+        <activity android:name=".view.activity.StoreMaterialActivity" />
+        <activity
+            android:name=".view.activity.MainActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".view.activity.SettingActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".view.activity.SignUpActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".view.activity.LoginActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.activity.PostDetailActivity" />
     </application>
 
 </manifest>
