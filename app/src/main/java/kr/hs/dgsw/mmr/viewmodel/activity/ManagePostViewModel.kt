@@ -1,6 +1,8 @@
 package kr.hs.dgsw.mmr.viewmodel.activity
 
 import androidx.lifecycle.MutableLiveData
+import io.reactivex.Single
+import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.observers.DisposableSingleObserver
 import kr.hs.dgsw.mmr.base.BaseViewModel
 import kr.hs.dgsw.mmr.network.model.response.PostResponse
@@ -11,6 +13,7 @@ class ManagePostViewModel: BaseViewModel() {
     private val repository = PostRepository()
 
     val myPost = MutableLiveData<List<PostResponse>>()
+    val deletePost = MutableLiveData<Boolean>()
 
     val adapter:MyPostListAdapter = MyPostListAdapter()
 
@@ -27,4 +30,18 @@ class ManagePostViewModel: BaseViewModel() {
 
         })
     }
+
+    fun deleteMyPost(userId: String, postId: Int) {
+        addDisposable(repository.deleteMyPost(userId, postId),
+        object: DisposableSingleObserver<Boolean>() {
+            override fun onSuccess(t: Boolean) {
+                deletePost.value = t
+            }
+
+            override fun onError(e: Throwable) {
+                onErrorEvent.value = e
+            }
+        })
+    }
+
 }
