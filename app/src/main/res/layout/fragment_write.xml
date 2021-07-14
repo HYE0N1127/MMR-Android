@@ -35,23 +35,23 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="50dp"
-                        android:layout_marginStart="70dp"
                         android:layout_marginTop="70dp"
-                        android:layout_marginEnd="60dp"
-                        android:gravity="center_vertical"
+                        android:layout_gravity="center"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="25dp"
                             android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
                             android:src="@drawable/ic_camera" />
 
                         <EditText
                             android:layout_width="200dp"
                             android:layout_height="40dp"
                             android:layout_marginStart="25dp"
+                            android:layout_gravity="center_vertical"
                             android:background="@drawable/background_square"
                             android:gravity="center"
                             android:hint="이미지 URL"
@@ -63,6 +63,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="50dp"
+                        android:layout_marginHorizontal="5dp"
                         android:backgroundTint="@color/white"
                         android:hint="제목 (50자)"
                         android:maxLength="50"
@@ -75,6 +76,7 @@
 
                     <EditText
                         android:layout_width="match_parent"
+                        android:layout_marginHorizontal="5dp"
                         android:layout_height="80dp"
                         android:backgroundTint="@color/white"
                         android:gravity="top"
@@ -92,6 +94,7 @@
                         android:layout_height="200dp"
                         android:backgroundTint="@color/white"
                         android:gravity="top"
+                        android:layout_marginHorizontal="5dp"
                         android:hint="조리 방법 (500자)"
                         android:maxLength="500"
                         android:text="@={vm.content}" />

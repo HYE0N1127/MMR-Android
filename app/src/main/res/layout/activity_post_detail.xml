@@ -80,7 +80,7 @@
                                 android:id="@+id/imageView3"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                tools:srcCompat="@drawable/ic_profile" />
+                                android:src="@drawable/ic_profile" />
 
                             <TextView
                                 android:id="@+id/detail_user"
