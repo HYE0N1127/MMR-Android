@@ -28,7 +28,7 @@ interface Api {
     @POST("post")
     fun createPost(@Body createPostRequest: CreatePostRequest): Single<Response<BaseResponse<Boolean>>>
 
-    @DELETE("post")
+    @HTTP(method = "DELETE", path = "post", hasBody = true)
     fun deletePost(@Body deletePostRequest: DeletePostRequest): Single<Response<BaseResponse<Boolean>>>
 
     @POST("post/like/{userId}/{postId}")
