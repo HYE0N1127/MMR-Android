@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import kr.hs.dgsw.mmr.base.BaseActivity
@@ -18,6 +19,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         super.onCreate(savedInstanceState)
         mPreferences = getSharedPreferences("LoginActivity", MODE_PRIVATE)
+        keepLoginCheck()
     }
 
     override fun observerViewModel() {
@@ -28,6 +30,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                 val preferencesEditor: SharedPreferences.Editor = mPreferences.edit()
                 preferencesEditor.putString("name", it)
                 preferencesEditor.putString("id", id.value)
+                if (mBinding.checkBox.isChecked) {
+                    preferencesEditor.putString("checked", "true")
+                }
                 preferencesEditor.apply()
 
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
@@ -41,6 +46,16 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                 startActivity(intent)
             })
 
+        }
+    }
+
+    private fun keepLoginCheck() {
+        if (!mPreferences.getString("name", null).toString()
+                .equals(null) && !mPreferences.getString("id", null).toString()
+                .equals(null) && mPreferences.getString("checked", "false").toString() == "true"
+        ) {
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }
